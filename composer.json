@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "JelteV\\ApplicationConfiguration\\": "src/"
+    }
+  },
+  "require": {
+    "phpunit/phpunit": "^9.3.11"
+  }
+}
