@@ -2,7 +2,7 @@
 
 namespace JelteV\ApplicationConfiguration\Resources\Validation;
 
-interface ResourceValidatorInterFace
+interface ResourceValidatorInterface
 {
-    private function validate($resource): bool;
+    public function validate($resource): bool;
 }

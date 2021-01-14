@@ -3,8 +3,11 @@
 
 namespace JelteV\ApplicationConfiguration\Resources\Handlers;
 
-
-class ResourceHandlerInterface
+interface ResourceHandlerInterface
 {
+    public function getIdentifier(): string
 
+    public function getResource()
+
+    public function changed(): bool
 }
