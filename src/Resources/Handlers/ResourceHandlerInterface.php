@@ -1,6 +1,5 @@
 <?php
 
-
 namespace JelteV\ApplicationConfiguration\Resources\Handlers;
 
 interface ResourceHandlerInterface

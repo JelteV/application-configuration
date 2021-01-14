@@ -1,8 +1,6 @@
 <?php
 
-
 namespace JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Files\Yaml;
-
 
 use JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Files\AbstractHandlerFactory;
 use JelteV\ApplicationConfiguration\Resources\Handlers\Files\ResourceHandler;

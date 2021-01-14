@@ -1,6 +1,5 @@
 <?php
 
-
 namespace JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Files\Xml;
 
 use JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Files\AbstractHandlerFactory;
