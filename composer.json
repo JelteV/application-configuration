@@ -5,6 +5,9 @@
     }
   },
   "require": {
-    "phpunit/phpunit": "^9.3.11"
+    "phpunit/phpunit": "^9.3.11",
+    "ext-libxml": "*",
+    "ext-yaml": "*",
+    "ext-simplexml": "*"
   }
 }
