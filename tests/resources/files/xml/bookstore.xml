@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<stores>
+    <store>
+        <name>The bookworm</name>
+        <owner>Johnny Foo</owner>
+        <registered>true</registered>
+        <startdatetime>1961-12-12 08:00:00</startdatetime>
+        <revenue>100.000</revenue>
+        <coc>4546446</coc>
+        <payed_taxes>false</payed_taxes>
+        <opening_hours>
+            <days>
+                <monday daynumber="1">
+                    <from>09:00</from>
+                    <to>17:30</to>
+                </monday>
+                <tuesday daynumber="1">
+                    <from>09:00</from>
+                    <to>17:30</to>
+                </tuesday>
+                <wednesday daynumber="1">
+                    <from>09:00</from>
+                    <to>17:30</to>
+                </wednesday>
+                <thursday daynumber="1">
+                    <from>09:00</from>
+                    <to>17:30</to>
+                </thursday>
+                <friday daynumber="1">
+                    <from>09:00</from>
+                    <to>17:30</to>
+                </friday>
+            </days>
+        </opening_hours>
+        <books>
+            <book>
+                <title>1984</title>
+            </book>
+            <book>
+                <title>Brave New World</title>
+            </book>
+            <book>
+                <title>Frankenstein</title>
+            </book>
+            <book>
+                <title>To kill a Mockingbird</title>
+            </book>
+            <book>
+                <title>Of Mice and Men</title>
+            </book>
+        </books>
+    </store>
+</stores>

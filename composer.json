@@ -4,6 +4,11 @@
       "JelteV\\ApplicationConfiguration\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "JelteV\\ApplicationConfiguration\\Tests\\": "tests/"
+    }
+  },
   "require": {
     "phpunit/phpunit": "^9.3.11",
     "ext-libxml": "*",
