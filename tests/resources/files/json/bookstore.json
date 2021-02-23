@@ -1,0 +1,47 @@
+{
+"name": "The bookworm",
+"type": "bookstore",
+"owner": "Johnny Foo",
+"registered": true,
+"startdatetime": "1961-12-12 08:00:00",
+"revenue": 100.000,
+"coc": 4546446,
+"payed_taxes": false,
+"opening_hours": {
+  "days": [
+     {
+      "day": "monday",
+      "from": "09:00",
+      "to": "17:30"
+     },
+    {
+      "day": "tuesday",
+      "from": "09:00",
+      "to": "17:30"
+    },
+    {
+      "day": "wednesday",
+      "from": "09:00",
+      "to": "17:30"
+    },
+    {
+      "day": "thursday",
+      "from": "09:00",
+      "to": "17:30"
+    },
+    {
+      "day": "friday",
+      "from": "09:00",
+      "to": "17:30"
+    }
+  ]
+},
+"books": [
+    "1984",
+    "Brave New World",
+    "Frankenstein",
+    "To kill a mockingbird",
+    "Of Mice and Men"
+]
+}
+

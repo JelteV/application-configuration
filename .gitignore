@@ -1,4 +1,4 @@
-index.php
+.phpunit.result.cache
 .idea/
 composer.phar
 /vendor/

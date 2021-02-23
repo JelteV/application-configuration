@@ -1,0 +1,32 @@
+bookstore:
+  type: bookstore
+  name: The bookworm
+  owner: Johnny Foo
+  registered: true
+  startdatetime: "1961-12-12 08:00:00"
+  revenue: 100.000
+  coc: 4546446
+  payed_taxes: true
+  opening_hours:
+      days:
+        - monday:
+            from: "09:00"
+            to:  "17:30"
+        - tuesday:
+            from: "09:00"
+            to: "17:30"
+        - wednesday:
+            from: "09:00"
+            to: "17:30"
+        - thursday:
+            from: "09:00"
+            to: "17:30"
+        - friday:
+            from: "09:00"
+            to: "17:30"
+  books:
+    - '1984'
+    - Brave New World
+    - Frankenstein
+    - To kill a Mockingbird
+    - Of Mice and Men
