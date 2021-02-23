@@ -11,10 +11,10 @@ Daarnaast dient de module de ontwikkelaar te voorzien van een enkele en eenvoudi
 instellingen uit diverse bronnen uit te lezen. Nadat de applicatie instellingen geladen zijn door de module is
 deze methode voor alle applicatie instellingen hetzelfde.
 
-Daarnaast vind ik het belangerijk dat waar mogelijk applicatie instellingen "strong-typed" worden teruggegeven.
-Bijvoorbeeld: `1.5` wordt een double, `true` wordt een boolean. `'2020-01-03'` wordt een \DateTime instance. 
+Daarnaast vind ik het belangrijk dat waar mogelijk applicatie instellingen "strong-typed" worden teruggegeven.
+Bijvoorbeeld: `'1.5'` wordt een double, `'true'` wordt een boolean. `'2020-01-03'` wordt een \DateTime instance. 
 
-De module moet te gebruiken zijn in PHP webapplicaties en PHP CLI scripts. De eerste versie, die momenteel in 
+De module moet te gebruiken zijn in PHP webapplicaties en PHP CLI scripts. De eerste versie, die nu in 
 ontwikkeling is, moet het mogelijk maken om applicatie instellingen uit diverse bestandstypes te laden. 
 Nu worden de volgende bestandstypes ondersteund:
 
@@ -30,7 +30,12 @@ Nu worden de volgende bestandstypes ondersteund:
 
 ## Applicatie entiteiten
 
-Hieronder zal ik een korte beschrijving geven van de basis entiteiten van deze module.
+### Applicatie class-diagram
+
+Hieronder zal ik een korte beschrijving geven van de belangrijkste entiteiten van deze module. Zie de klasse-diagram 
+voor een overzicht van alle entiteiten die de applicatie bevat.  
+
+![class-diagram](class-diagram.png)
 
 #### Resource
 
