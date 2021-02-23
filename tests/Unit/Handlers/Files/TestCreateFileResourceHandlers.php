@@ -2,7 +2,7 @@
 
 namespace JelteV\ApplicationConfiguration\Test\Unit\Handlers\Files;
 
-use JelteV\ApplicationConfiguration\Module;
+use JelteV\ApplicationConfiguration\ApplicationConfiguration;
 use JelteV\ApplicationConfiguration\Resources\Handlers\Factories\ResourceHandlerFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +11,7 @@ class TestCreateFileResourceHandlers extends TestCase
     public function __construct()
     {
         parent::__construct();
-        new Module();
+        new ApplicationConfiguration();
     }
 
     private function getPaths(): array

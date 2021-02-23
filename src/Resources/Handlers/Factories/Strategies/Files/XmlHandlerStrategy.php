@@ -2,14 +2,33 @@
 
 namespace JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Strategies\Files;
 
+use JelteV\ApplicationConfiguration\Entries\Flattener\ConfigurationEntriesFlattenerInterface;
+use JelteV\ApplicationConfiguration\Resources\Resource\ConfigurationResourceInterface;
+
+/**
+ * Handler strategy to read and retrieve the content of an .xml file.
+ */
 class XmlHandlerStrategy extends AbstractFileHandlerStrategy
 {
     /**
-     * @return null|array
+     * Initialize a new XmlHandlerStrategy instance.
+     *
+     * @param ConfigurationEntriesFlattenerInterface $entriesFlattener The entries flattener to process the application settings data.
      */
-    protected function getResourceContent(): ? array
+    public function __construct(ConfigurationEntriesFlattenerInterface $entriesFlattener)
     {
-        $file       = $this->getResource();
+        parent::__construct($entriesFlattener);
+    }
+
+    /**
+     * Read the content of the given resource.
+     *
+     * @param ConfigurationResourceInterface $configurationResource The ConfigurationResource to read the content for.
+     * @return null|array On succes returns the content of the specified resource.
+     */
+    protected function getResourceContent(ConfigurationResourceInterface $configurationResource): ? array
+    {
+        $file       = $configurationResource->getResource();
         $content    = null;
 
         try {
@@ -23,23 +42,11 @@ class XmlHandlerStrategy extends AbstractFileHandlerStrategy
         return $content;
     }
 
-//    protected function produceHandler(\SplFileInfo $file): ?ResourceHandlerInterface
-//    {
-//        $handler    = null;
-//
-//        try {
-//            $xml = simplexml_load_file($file->getRealPath(), 'SimpleXMLElement', LIBXML_NOBLANKS);
-//
-//            if ($xml !== false) {
-//                $handler = new FileResourceHandler($file, null);
-//            }
-//        } catch (\Exception $e) {
-//            throw new \RuntimeException("Could not create handler for file: '{$file->getRealPath()}'");
-//        }
-//
-//        return $handler;
-//    }
-
+    /**
+     * Get the file extensions that handler strategy can handle.
+     *
+     * @return string[] The list of supported file extensions
+     */
     public static function getExtensions(): array
     {
         return ['xml'];

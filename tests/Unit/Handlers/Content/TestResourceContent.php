@@ -2,7 +2,7 @@
 
 namespace JelteV\ApplicationConfiguration\Test\Unit\Handlers\Content;
 
-use JelteV\ApplicationConfiguration\Module;
+use JelteV\ApplicationConfiguration\ApplicationConfiguration;
 use JelteV\ApplicationConfiguration\Resources\Handlers\Factories\ResourceHandlerFactory;
 use JelteV\ApplicationConfiguration\Resources\Handlers\ResourceHandlerInterface;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +12,7 @@ class TestResourceContent extends TestCase
     public function __construct()
     {
         parent::__construct();
-        new Module();
+        new ApplicationConfiguration();
     }
 
     /**

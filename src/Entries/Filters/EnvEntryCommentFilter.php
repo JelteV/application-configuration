@@ -2,6 +2,9 @@
 
 namespace JelteV\ApplicationConfiguration\Entries\Filters;
 
+/**
+ * Represent an filter to separate comments from application setting data for .env application settings.
+ */
 class EnvEntryCommentFilter
 {
     /**
@@ -192,7 +195,7 @@ class EnvEntryCommentFilter
     private static function removeLineComment(string $value, string $regexPattern): ?string
     {
         $newValue       = null;
-        // Replace the any found comment with an empty string.
+        // Replace found comment with an empty string.
         $replacedValue  = preg_replace($regexPattern, '', $value);
 
         if (is_string($replacedValue) && preg_last_error() === PREG_NO_ERROR) {

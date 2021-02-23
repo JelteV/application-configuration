@@ -2,23 +2,37 @@
 
 namespace JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Strategies\Files;
 
-use JelteV\ApplicationConfiguration\Resources\Handlers\Files\FileResourceHandler as FileResourceHandler;
-use JelteV\ApplicationConfiguration\Resources\Handlers\ResourceHandlerInterface;
+use JelteV\ApplicationConfiguration\Entries\Flattener\ConfigurationEntriesFlattenerInterface;
+use JelteV\ApplicationConfiguration\Resources\Resource\ConfigurationResourceInterface;
 
+/**
+ * Handler strategy to read and retrieve the content of an .json file.
+ */
 class JsonHandlerStrategy extends AbstractFileHandlerStrategy
 {
     /**
-     * @return null|object
+     * Initialize a new JsonHandlerStrategy instance.
+     *
+     * @param ConfigurationEntriesFlattenerInterface $entriesFlattener The entries flattener to process the application settings data.
      */
-    protected function getResourceContent(): ? array
+    public function __construct(ConfigurationEntriesFlattenerInterface $entriesFlattener)
     {
-        $file       = $this->getResource();
+        parent::__construct($entriesFlattener);
+    }
+
+    /**
+     * Read the content of the given resource.
+     *
+     * @param ConfigurationResourceInterface $configurationResource The ConfigurationResource to read the content for.
+     * @return null|array On succes returns the content of the specified resource.
+     */
+    protected function getResourceContent(ConfigurationResourceInterface $configurationResource): ? array
+    {
+        $file       = $configurationResource->getResource();
         $content    = null;
 
         try {
             if ($content = file_get_contents($file->getRealPath())) {
-                // @todo: check what happens if we directly parse the json output to an array.
-                // json_decode($content, true)
                 if ($data = json_decode($content, true)) {
                     $content = $data;
                 }
@@ -30,6 +44,11 @@ class JsonHandlerStrategy extends AbstractFileHandlerStrategy
         return $content;
     }
 
+    /**
+     * Get the file extensions that handler strategy can handle.
+     *
+     * @return string[] The list of supported file extensions
+     */
     public static function getExtensions(): array
     {
         return ['json'];

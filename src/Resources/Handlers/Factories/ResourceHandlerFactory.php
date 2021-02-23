@@ -2,14 +2,17 @@
 
 namespace JelteV\ApplicationConfiguration\Resources\Handlers\Factories;
 
-use JelteV\ApplicationConfiguration\Resources\Handlers\ResourceHandlerInterface;
 use SplFileInfo;
+use JelteV\ApplicationConfiguration\Resources\Handlers\ResourceHandlerInterface;
+use JelteV\ApplicationConfiguration\Resources\Resource\Files\FileConfigurationResource;
 use JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Strategies\Files\AbstractFileHandlerStrategy;
 use JelteV\ApplicationConfiguration\Resources\Handlers\Factories\Strategies\HandlerStrategyFactory;
 use JelteV\ApplicationConfiguration\Resources\Handlers\Files\FileResourceHandler;
 use JelteV\ApplicationConfiguration\Resources\Helper\ResourceHelper;
 
-
+/**
+ * Create the ResourceHandler(s) for the given resource.
+ */
 class ResourceHandlerFactory implements ResourceHandlerFactoryInterface
 {
     /**
@@ -19,20 +22,26 @@ class ResourceHandlerFactory implements ResourceHandlerFactoryInterface
      */
     private HandlerStrategyFactory $strategyFactory;
 
+    /**
+     * Create a new ResourceHandlerFactory instance.
+     */
     public function __construct()
     {
         $this->strategyFactory = new HandlerStrategyFactory();
     }
 
     /**
-     * @param mixed $resource
-     * @return null|ResourceHandlerInterface[]
+     * Create the resource handler(s) for the given resource.
+     *
+     * @param mixed $resource The resource to create the resource handlers(s) for.
+     * @return null|ResourceHandlerInterface[] On success returns an list of resource handlers.
      */
     public function createHandlers($resource): ?array
     {
         $handlers = null;
 
         if (ResourceHelper::isPath($resource)) {
+            // When the given resource is an directory multiple files could be returned.
             if ($files = $this->getFileResourceHandlerPaths($resource)) {
                 $handlers = $this->getFileResourceHandlers($files);
             }
@@ -42,8 +51,10 @@ class ResourceHandlerFactory implements ResourceHandlerFactoryInterface
     }
 
     /**
-     * @param SplFileInfo[] $files
-     * @return null|ResourceHandlerInterface[]
+     * Create the handler(s) for the given file(s).
+     *
+     * @param SplFileInfo[] $files The file(s) to create the handler(s) for.
+     * @return null|ResourceHandlerInterface[] On success returns an list of resource handlers.
      */
     private function getFileResourceHandlers(array $files): ? array
     {
@@ -52,7 +63,7 @@ class ResourceHandlerFactory implements ResourceHandlerFactoryInterface
         foreach ($files as $file) {
             /** @var AbstractFileHandlerStrategy $strategy */
             if ($strategy = $this->strategyFactory->create($file)) {
-                $handlers[] = new FileResourceHandler($strategy);
+                $handlers[] = new FileResourceHandler(new FileConfigurationResource($file), $strategy);
             }
         }
 
@@ -60,8 +71,13 @@ class ResourceHandlerFactory implements ResourceHandlerFactoryInterface
     }
 
     /**
-     * @param $resource
-     * @return null|SplFileInfo[]
+     * Get the file path of the given resource.
+     *
+     * When given resource is an directory it could contains multiple resources, so in this case the one or more
+     * file paths are returned.
+     *
+     * @param mixed $resource The resource to get the file path(s) for.
+     * @return null|SplFileInfo[] On succes returns an list of SplFileInfo instances.
      */
     private function getFileResourceHandlerPaths($resource): ?array
     {

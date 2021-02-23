@@ -4,15 +4,34 @@ namespace JelteV\ApplicationConfiguration\Resources\Validation\Files;
 
 use JelteV\ApplicationConfiguration\Resources\Validation\ResourceValidatorInterface;
 
-class ResourceValidator implements ResourceValidatorInterface
+/**
+ * Validator determines if the validated resource is an valid file resource.
+ */
+class FileResourceValidator implements ResourceValidatorInterface
 {
+    /**
+     * The file extension that needs to match with the extension of the specified resource.
+     *
+     * @var string
+     */
     private string $extension;
 
+    /**
+     * Initialize a new FileResourceValidator instance.
+     *
+     * @param string $extension The file extension that needs to match with the extension of the specified resource.
+     */
     public function __construct(string $extension)
     {
         $this->extension = $extension;
     }
 
+    /**
+     * Validate the given resource for being an valid file resource.
+     *
+     * @param mixed $resource The resource to validate.
+     * @return bool Returns True if the resource is a valid file resource.
+     */
     public function validate($resource): bool
     {
         $valid = false;
@@ -29,6 +48,12 @@ class ResourceValidator implements ResourceValidatorInterface
         return $valid;
     }
 
+    /**
+     * Check if the given resource is a valid file.
+     *
+     * @param \SplFileInfo $resource The resource to check.
+     * @return bool Returns True if the resource is a valid file.
+     */
     private function isFile(\SplFileInfo $resource): bool
     {
         try {
@@ -45,6 +70,12 @@ class ResourceValidator implements ResourceValidatorInterface
         return $valid;
     }
 
+    /**
+     * Check if the resource if an valid directory.
+     *
+     * @param \SplFileInfo $resource The resource to check.
+     * @return bool Returns True if the given resource is an valid directory.
+     */
     private function isDirectory(\SplFileInfo $resource): bool
     {
         try {
